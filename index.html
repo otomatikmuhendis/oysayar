@@ -22,7 +22,7 @@
     }
 
     .column {
-      flex: 1;
+      flex: 50%;
       text-align: center;
       background-color: #fff;
       border-radius: 10px;
@@ -83,8 +83,17 @@
       min-height: 60px;
     }
 
-    h2 img {
-      width: 30px;
+    img.responsive {
+      width: 100%;
+      max-width: 215px;
+      height: auto;
+    }
+
+    @media (max-width: 720px) {
+      .column {
+        padding: 0;
+        margin: 0;
+      }
     }
   </style>
 </head>
@@ -92,7 +101,7 @@
 <body>
   <div class="container">
     <div class="column">
-      <img src="RecepTayyipErdogan.jpg" alt="Recep Tayyip Erdoğan">
+      <img src="RecepTayyipErdogan.jpg" alt="Recep Tayyip Erdoğan" class="responsive">
       <h2>Recep Tayyip Erdoğan</h2>
       <div class="counter">
         <button id="btnDecrease1" class="decrease">-</button>
@@ -101,7 +110,7 @@
       </div>
     </div>
     <div class="column">
-      <img src="KemalKilicdaroglu.jpg" alt="Kemal Kılıçdaroğlu">
+      <img src="KemalKilicdaroglu.jpg" alt="Kemal Kılıçdaroğlu" class="responsive">
       <h2>Kemal Kılıçdaroğlu</h2>
       <div class="counter">
         <button id="btnDecrease2" class="decrease">-</button>
@@ -125,7 +134,7 @@
     function updateSum() {
       const sumDisplay = document.getElementById('sum');
 
-      const sum = columns.reduce(function(a, b) { return a + b.count }, 0);
+      const sum = columns.reduce(function (a, b) { return a + b.count }, 0);
       sumDisplay.textContent = sum;
     }
 
@@ -151,7 +160,7 @@
 
     var columns = [{ id: 1, count: 0 }, { id: 2, count: 0 }];
 
-    var app = function() {
+    var app = function () {
       columns.forEach(column => {
         initializeColumn(column);
       });
@@ -162,7 +171,7 @@
         columns.forEach(column => {
           const countDisplay = document.getElementById('spnCount' + column.id);
 
-          column.count = 0;          
+          column.count = 0;
           countDisplay.textContent = column.count;
         });
 
